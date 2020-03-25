@@ -28,5 +28,28 @@ int main()
   {
     printf(" P[%0.0lf]   |       %d      |     %d      |\n",process[i],at[i],bt[i]);
   }
+  printf("\n Sorting Processes by Arrivaltime using selection sort \n");
+  for(i=0;i<n;i++)
+  {
+    for(j=0;j<n;j++)
+    {
+      if(at[i]<at[j])
+      {
+        
+        temp = bt[j];
+        bt[j] = bt[i];
+        bt [i] = temp;
+	
+	    temp = process[j];
+        process[j] = process[i];
+        process[i] = temp;
+
+	    temp = at[j];
+        at[j] = at[i];
+        at[i] = temp;
+      
+      }
+    }
+  }
   return 0;
 }

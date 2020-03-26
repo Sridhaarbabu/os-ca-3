@@ -51,5 +51,38 @@ int main()
       }
     }
   }
+   printf("\n Now Values are \n");
+  printf(" Process | Arrival Time | Burst Time |\n");
+  for(i=0;i<n;i++)
+  {
+    printf(" P[%0.0lf]   |       %d      |     %d      |\n",process[i],at[i],bt[i]);
+  }
+
+  int k = 1;
+  float b_time = 0;
+  for(j=0;j<n;j++)
+  {
+    b_time = b_time + bt[j];
+    min = bt[k];
+
+    for(i=k;i<n;i++)
+    {
+      if((b_time >= at[i])&&(bt[i]<min))
+      {
+        temp = bt[k];
+        bt[k] = bt[i];
+        bt[i] = temp;
+
+        temp = at[k];
+        at[k] = at[i];
+        at[i] = temp;
+
+        temp = process[k];
+        process[k] = process[i];
+        process[i] = temp;
+      }
+    }
+    k++;
+  }
   return 0;
 }

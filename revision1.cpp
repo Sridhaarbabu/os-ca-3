@@ -84,5 +84,43 @@ int main()
     }
     k++;
   }
+  wt[0] = 0;
+  for(i=1;i<n;i++)
+  {
+    sum += bt[i-1];
+    wt[i] = sum - at[i];
+    wait_final = wait_final + wt[i]; 
+  }
+  wait_avg = wait_final/n;
+  for(i=0;i<n;i++)
+  {
+    sum2 = sum2 + bt[i];
+    tat[i] = sum2 - at[i];
+    turnaround_final = turnaround_final + tat[i];
+  }
+  turnaround_avg=turnaround_final/n;
+printf("\n Now Values are \n");
+  printf(" Process | Arrival Time | Burst Time |  Waiting Time  |  Turn Around Time  |\n");
+  for(i=0;i<n;i++)
+  {
+    printf("  P[%0.0lf]   |       %d      |     %d      |        %d       |         %d          |\n",process[i],at[i],bt[i],wt[i],tat[i]);
+  } 
+
+  /* formulae
+    Priority = 1+ Waiting time / Estimated run time
+  */ 
+  ct[0] = bt[0];
+  for(i=1;i<n;i++)
+  {
+    ct[i] = ct[i-1] + bt[i];
+    printf("completion time is %f\n",ct[i]);
+  }
+
+  for(i=0;i<n;i++)
+  {
+    priority[i] = 1+wt[i]/ct[i];
+    printf("priority is %f\n",priority[i]);
+  }
+
   return 0;
 }

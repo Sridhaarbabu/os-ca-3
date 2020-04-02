@@ -121,6 +121,15 @@ printf("\n Now Values are \n");
     priority[i] = 1+wt[i]/ct[i];
     printf("priority is %f\n",priority[i]);
   }
+  printf("\n Final Values are \n");
+  printf(" Process | Arrival Time | Burst Time |  Waiting Time  |  Turn Around Time  |\n");
+  printf("  P[%0.0lf]   |       %d      |     %d      |        %d       |         %d          |\n",process[0],at[0],bt[0],wt[0],tat[0]);
+  for(i=n-1;i>0;i--)
+  {
+    printf("  P[%0.0lf]   |       %d      |     %d      |        %d       |         %d          |\n",process[i],at[i],bt[i],wt[i],tat[i]);
+  }
 
+  printf("\n Average Turn Around Time : %f",turnaround_avg);
+  printf("\n Average Waiting Time     : %f\n",wait_avg);
   return 0;
 }
